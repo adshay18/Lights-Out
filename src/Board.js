@@ -43,8 +43,8 @@ function Board({ nrows, ncols, chanceLightStartsOn = 0.5 }) {
 		return initialBoard;
 	}
 
-	function hasWon() {
-		board.every((row) => row.every((cell) => !cell));
+	function hasWon(board) {
+		return board.every((row) => row.every((cell) => cell === false));
 	}
 
 	function flipCellsAround(coord) {
@@ -75,8 +75,8 @@ function Board({ nrows, ncols, chanceLightStartsOn = 0.5 }) {
 	}
 
 	// if the game is won, just show a winning msg & render nothing else
-	if (hasWon()) {
-		return <div>You won!</div>;
+	if (hasWon(board)) {
+		return <div className="Board">You won!</div>;
 	}
 
 	// make table board
